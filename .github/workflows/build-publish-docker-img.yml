@@ -1,6 +1,5 @@
 name: Docker Image CI PROD
 
-name: My Reusable Workflow
 
 on:
   workflow_call:
@@ -9,7 +8,7 @@ on:
         description: 'Repository tag for Docker image'
         required: true
         type: string
-        
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}

@@ -14,7 +14,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 jobs:
   generate-tag:
-  uses: abiraahammed/workflow-templates/.github/workflows/docker-image-tag.yml@v1.0.0
+  uses: abiraahammed/workflow-templates/.github/workflows/docker-image-tag.yml@develop
 
   build-and-push-image:
     runs-on: ubuntu-latest

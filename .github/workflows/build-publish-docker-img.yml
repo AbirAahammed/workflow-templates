@@ -13,8 +13,6 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 jobs:
-  generate-tag:
-  uses: abiraahammed/workflow-templates/.github/workflows/docker-image-tag.yml@develop
 
   build-and-push-image:
     runs-on: ubuntu-latest
@@ -33,6 +31,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Docker tag
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" == "release" ]; then
+            echo "TAG_NAME=${{ github.event.release.tag_name }}" >> $GITHUB_ENV
+          else
+            echo "TAG_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta

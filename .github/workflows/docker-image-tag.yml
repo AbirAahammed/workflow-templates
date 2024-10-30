@@ -20,4 +20,4 @@ jobs:
           fi
 
       - name: Output Docker tag
-        run: echo "Docker tag: ${{ env.TAG_NAME }}"
+        run: echo "Docker tag:" ${{ env.TAG_NAME }}

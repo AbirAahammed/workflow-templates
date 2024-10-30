@@ -1,14 +1,11 @@
 name: Docker Image Tag
 
-
 on:
   workflow_call:
-
 
 jobs:
   generate-tag:
     runs-on: ubuntu-latest
-
 
     steps:
       - name: Generate Docker tag
@@ -18,7 +15,5 @@ jobs:
             echo "TAG_NAME=${{ github.event.release.tag_name }}" >> $GITHUB_ENV
           else
             echo "TAG_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
-          fi
-
       - name: Output Docker tag
         run: echo "Docker tag: ${{ env.TAG_NAME }}"
